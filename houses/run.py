@@ -66,6 +66,10 @@ def main():
     data_house.original_price = data_house.original_price.astype(np.float)
     data_house.close_period = data_house.close_period.astype(np.int)
     data_house['size'] = data_house['size'].astype(np.float)
+    # 单位造成的误会
+    data_house['total_price'] = data_house.total_price.apply(lambda x: x * 10000)
+    data_house['original_price'] = data_house.original_price.apply(lambda x: x * 10000)
+    data_parking_lot['total_price'] = data_parking_lot.total_price.apply(lambda x: x * 10000)
     # 重建索引
     data_house = data_house.reset_index(drop=True)
     data_parking_lot = data_parking_lot.reset_index(drop=True)
